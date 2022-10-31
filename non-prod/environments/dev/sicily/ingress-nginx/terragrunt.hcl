@@ -7,3 +7,5 @@ include "root" {
 include "envcommon" {
   path = "${dirname(find_in_parent_folders())}/_envcommon/ingress-nginx.hcl"
 }
+
+skip = true //until local cluster config is prepared
