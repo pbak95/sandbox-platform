@@ -36,6 +36,14 @@ generate "provider" {
         config_context = "${local.kube_config_context}"
       }
     }
+
+    provider "argocd" {
+      server_addr = "localhost:8080" //TODO change after local DNS is implemented
+      username    = "admin"
+      password    = "dev"
+      insecure    = "true"
+    }
+
   EOF
 }
 
@@ -52,6 +60,10 @@ generate "versions" {
         helm = {
           source  = "hashicorp/helm"
           version = "~> 2.7"
+        }
+        argocd = {
+          source  = "oboukili/argocd"
+          version = "~> 3.2.0"
         }
       }
     }

@@ -1,12 +1,18 @@
 locals {
   environment = "dev"
   namespace   = "platform-${local.environment}"
-  components = {
+  components  = {
     ingress-nginx = {
       chart_version = "9.3.18"
     }
     cert-manager = {
       chart_version = "0.4.17"
+    }
+    argocd = {
+      chart_version = "4.9.11"
+    }
+    kube-prometheus-stack = {
+      chart_version = "41.7.2"
     }
   }
 }
