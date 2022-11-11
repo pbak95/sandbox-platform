@@ -14,5 +14,8 @@ locals {
     kube-prometheus-stack = {
       chart_version = "41.7.2"
     }
+    logging-operator = {
+      chart_version = "3.17.9"
+    }
   }
 }
