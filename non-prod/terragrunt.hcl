@@ -44,6 +44,12 @@ generate "provider" {
       insecure    = "true"
     }
 
+    provider "htpasswd" {
+    }
+
+    provider "random" {
+    }
+
   EOF
 }
 
@@ -65,8 +71,21 @@ generate "versions" {
           source  = "oboukili/argocd"
           version = "~> 3.2.0"
         }
+        htpasswd = {
+          source = "loafoe/htpasswd"
+          version = "1.0.4"
+        }
+        random = {
+          source = "hashicorp/random"
+          version = "3.4.3"
+        }
+        grafana = {
+          source = "grafana/grafana"
+          version = "~> 1.31.1"
+        }
       }
     }
+
 EOF
 }
 

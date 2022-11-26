@@ -15,13 +15,9 @@ locals {
 
   namespace     = local.env_vars.locals.namespace
   chart_version = local.env_vars.locals.components.kube-prometheus-stack.chart_version
-
-  cluster_name = local.cluster_vars.locals.cluster_name
 }
 
 inputs = {
   namespace          = local.namespace
   chart_version      = local.chart_version
-  destination_server = "https://kubernetes.default.svc"
-  cluster            = local.cluster_name
 }

@@ -17,5 +17,8 @@ locals {
     logging-operator = {
       chart_version = "3.17.9"
     }
+    loki = {
+      chart_version = "3.3.4"
+    }
   }
 }
