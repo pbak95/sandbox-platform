@@ -23,5 +23,8 @@ locals {
     logging = {
       chart_version = "3.17.8"
     }
+    crossplane = {
+      chart_version = "1.10.2"
+    }
   }
 }
