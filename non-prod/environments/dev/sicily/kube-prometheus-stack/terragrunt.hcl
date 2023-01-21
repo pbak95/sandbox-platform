@@ -8,6 +8,8 @@ include "envcommon" {
   path = "${dirname(find_in_parent_folders())}/_envcommon/kube-prometheus-stack.hcl"
 }
 
+skip = true
+
 inputs = {
   //TODO inject from some secret store
   admin_credentials = {

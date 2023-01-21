@@ -20,5 +20,8 @@ locals {
     loki = {
       chart_version = "3.3.4"
     }
+    logging = {
+      chart_version = "3.17.8"
+    }
   }
 }
