@@ -1,0 +1,29 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+  name: example-inline
+spec:
+  forProvider:
+    # Workspaces default to using a remote source - like workspace-remote.yaml.
+    # For simple cases you can use an inline source to specify the content of
+    # main.tf as opaque, inline HCL.
+    source: Inline
+    module: |      
+      resource "kubernetes_namespace" "example" {
+        metadata {
+          annotations = {
+            managed-by = "crossplane"
+          }
+          
+          labels = {
+            workspace = "${terraform.workspace}"
+          }
+        
+          name = "example"
+        }
+      }
+      
+
+  writeConnectionSecretToRef:
+    namespace: crossplane-system-dev
+    name: terraform-workspace-example-inline
