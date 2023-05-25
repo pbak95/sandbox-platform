@@ -1,0 +1,38 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: xcertmanagerinstances.components.platform.pbsc
+  labels:
+    provider: terraform
+spec:
+  writeConnectionSecretsToNamespace: crossplane-system-dev
+  compositeTypeRef:
+    apiVersion: components.platform.pbsc/v1alpha1
+    kind: XCertManagerInstance
+  resources:
+    - name: workspace
+      base:
+        apiVersion: tf.upbound.io/v1beta1
+        kind: Workspace
+        spec:
+          forProvider:
+            source: Remote
+            module: git::https://github.com/pbak95/terraform-modules.git//cert-manager?ref=main
+            vars:
+            - key: namespace
+              value: default
+            - key: environment
+              value: dev
+            - key: chart_version
+              value: 0.4.17
+          writeConnectionSecretToRef:
+            namespace: crossplane-system-dev
+      patches:
+        - fromFieldPath: "metadata.name"
+          toFieldPath: "spec.writeConnectionSecretToRef.name"
+          transforms:
+            - type: string
+              string:
+                fmt: "%s-cert-manager"
+        - fromFieldPath: "spec.parameters.namespace"
+          toFieldPath: "spec.forProvider.vars[0].value"

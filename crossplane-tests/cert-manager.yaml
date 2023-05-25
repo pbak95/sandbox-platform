@@ -1,0 +1,13 @@
+apiVersion: components.platform.pbsc/v1alpha1
+kind: CertManagerInstance
+metadata:
+  name: cert-manager-example
+  namespace: crossplane-system-dev
+spec:
+  parameters:
+    namespace: platform
+  compositionSelector:
+    matchLabels:
+      provider: terraform
+  writeConnectionSecretToRef:
+    name: cert-manager-example-conn

@@ -1,0 +1,7 @@
+expose:
+  type: clusterIP
+  tls:
+    enabled: no
+    auto:
+      commonName: "localhost"
+externalURL: http://localhost

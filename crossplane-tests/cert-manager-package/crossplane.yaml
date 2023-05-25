@@ -1,0 +1,20 @@
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Configuration
+metadata:
+  name: cert-manager-terraform
+  annotations:
+    meta.crossplane.io/maintainer: pbak95
+    meta.crossplane.io/source: github.com/pbak95/sandbox-platform
+    meta.crossplane.io/license: Apache-2.0
+    meta.crossplane.io/description: |
+      An introductory example how to port terraform module to crossplane.
+    meta.crossplane.io/readme: |
+      Too lazy to write sth here.
+  labels:
+    provider: terraform
+spec:
+  crossplane:
+    version: ">=v1.8.0-0"
+  dependsOn:
+    - provider: xpkg.upbound.io/upbound/provider-terraform
+      version: ">=v0.1.0"

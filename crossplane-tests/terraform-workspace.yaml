@@ -9,7 +9,7 @@ spec:
     # main.tf as opaque, inline HCL.
     source: Inline
     module: |      
-      resource "kubernetes_namespace" "example" {
+      resource "kubernetes_namespace" "platform" {
         metadata {
           annotations = {
             managed-by = "crossplane"
@@ -19,7 +19,7 @@ spec:
             workspace = "${terraform.workspace}"
           }
         
-          name = "example"
+          name = "platform"
         }
       }
       
